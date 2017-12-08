@@ -1,0 +1,57 @@
+
+spring:
+  application:
+    name: td-openapi-microservice-auth
+  datasource:
+    name: test
+    url: jdbc:postgresql://localhost:5432/openapi
+    username: iop
+    password: iop
+    #使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name:
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+mybatis:
+    basepackage: com.teradata.openpai.auth
+    xmlLocation: classpath:mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123@localhost:8761/eureka/
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+server:
+  port: 7777
+
+jwt:
+  expire: 3600 #有效期是 秒
+  pri-key:
+    path: D:\Work\ZZProject\DataServBus\td-bigdata-openapiV2\td-openapi-microservice-auth\src\main\resources\client\pri.key
+  pub-key:
+    path: D:\Work\ZZProject\DataServBus\td-bigdata-openapiV2\td-openapi-microservice-auth\src\main\resources\client\pub.key
+
+client:
+  expire: 3600 #有效期是2s
+  pri-key:
+    path: D:\Work\ZZProject\DataServBus\td-bigdata-openapiV2\td-openapi-microservice-auth\src\main\resources\client\pri.key
+  pub-key:
+    path: D:\Work\ZZProject\DataServBus\td-bigdata-openapiV2\td-openapi-microservice-auth\src\main\resources\client\pub.key
+
+#查看当前项目中已启用和未启用的自动配置的报告
+debug: true

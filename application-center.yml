@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: td-openapi-microservice-center
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123@localhost:8761/eureka/
+    register-with-eureka: false #不作为客户端注册到注册中心
+    fetch-registry: false #发现注册中心的过程
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: 123
