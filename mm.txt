@@ -1,0 +1,1 @@
+mm.txt is test file. To test the gitignore config used.
