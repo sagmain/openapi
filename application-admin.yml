@@ -47,7 +47,7 @@ eureka:
       status-page-url-path: /info
       health-check-url-path: /health
 server:
-  port: 7772
+  port: 7771
 
 
 
